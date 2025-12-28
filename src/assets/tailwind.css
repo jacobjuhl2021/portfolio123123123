@@ -1,0 +1,102 @@
+@import "tailwindcss";
+@import './fonts/fonts.css';
+
+/* Tailwind base layer: lowest priority */
+@layer base {
+
+  @theme {
+    --color-text: #03011c;
+    --color-background: #f7f6ff;
+    --color-primary: #433bff;
+    --color-secondary: #f9797a;
+    --color-accent: #e08633;
+    --color-custom-gray: #B4B4B4;
+    --color-emerald: #059669;
+  }
+
+  /* Global base font for all text elements */
+  body, h1, h2, h3, h4, h5, h6,
+  a, button, input, label, span, p, div {
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  /* Headings scale */
+  h1 {
+    font-weight: 900;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    line-height: 1.1;
+  }
+  h2 {
+    font-weight: 800;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.15;
+  }
+  h3 {
+    font-weight: 700;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    line-height: 1.2;
+  }
+  h4 {
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+  h5 {
+    font-weight: 600;
+    font-size: 1.25rem;
+    line-height: 1.3;
+  }
+  h6 {
+    font-weight: 600;
+    font-size: 1.1rem;
+    line-height: 1.35;
+  }
+
+  /* Paragraphs */
+  p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  /* Links */
+  a {
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  /* Buttons */
+  button {
+    font-weight: 600;
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+
+  /* Inputs / Labels */
+  input, textarea, select {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  label {
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .m-container {
+    @apply grid grid-cols-4 gap-4 mx-auto px-4 sm:container;
+  }
+
+  /* Smoother headings */
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.02em;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+  }
+}
