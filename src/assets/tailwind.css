@@ -89,6 +89,9 @@
   .m-container {
     @apply grid grid-cols-4 gap-4 mx-auto px-4 sm:container;
   }
+  .gapper {
+    @apply mx-auto px-4;
+  }
 
   /* Smoother headings */
   h1, h2, h3, h4, h5, h6 {

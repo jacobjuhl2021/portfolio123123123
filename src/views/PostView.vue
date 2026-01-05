@@ -55,8 +55,8 @@ onMounted(() => {
 
 <template>
   <Header />
-    <main>
-        <div class="m-container mt-6 mb-2">
+    <main class="">
+        <div class="m-container pt-12 mb-2">
             <div class="col-span-full">
                 <p class="font-bold">Her kan der læses om projekter jeg tidligere har været med til at udvikle, hvad de gik ud på og hvad jeg har lavet i dem</p>
             </div>

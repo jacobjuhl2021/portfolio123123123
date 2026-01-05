@@ -1,15 +1,15 @@
 <template>
   <!-- wrapper: reference for absolute positioning -->
-  <div ref="boxWrapper" class="relative w-full" :style="{ height: height + 'px' }">
+  <nav ref="boxWrapper" class="relative w-full" :style="{ height: height + 'px' }">
     <!-- INDRE BOX: det indhold der SKAL clips -->
     <div class="bg-primary w-full h-full overflow-hidden">
-        <div class="flex items-center justify-center h-full">
-            <div class="flex flex-col mt-17 min-h-[80px]">
+        <div class="flex items-center justify-center h-full pt-35 pb-28">
+            <div class="flex flex-col min-h-[120px]">
                 <router-link
                     v-for="link in sortedLinks"
                     :key="link.path"
                     :to="link.path"
-                    class="text-4xl font-black mx-auto py-4 px-2"
+                    class="text-5xl font-black mx-auto py-4 px-2"
                     :class="route.path === link.path ? 'text-secondary!' : 'text-white!'"
                 >
                     {{ link.label }}
@@ -17,8 +17,7 @@
             </div>
         </div>
     </div>
-
-    <!-- HANDLE: søskende til den indre box så den kan overlappe kanten og ikke clipped -->
+    <!-- RESIZE HANDLE -->
     <button
     ref="handle"
     @pointerdown="onPointerDown"
@@ -34,7 +33,7 @@
             </div>
         </span>
     </button>
-  </div>
+  </nav>
 </template>
 
 <script setup>
@@ -42,8 +41,8 @@ import { ref, onBeforeUnmount, computed } from 'vue'
 import { useRoute } from 'vue-router'
 
 const props = defineProps({
-  initialHeight: { type: Number, default: 80 },
-  minHeight: { type: Number, default: 80 },
+  initialHeight: { type: Number, default: 120 },
+  minHeight: { type: Number, default: 120 },
   maxHeight: { type: Number, default: 1000 }
 })
 
@@ -101,8 +100,9 @@ const route = useRoute()
 
 // Dine links som data
 const links = [
-  { label: "Om mig", path: "/" },
-  { label: "Projekter", path: "/post" }
+  { label: "om mig", path: "/" },
+  { label: "projekter", path: "/post" },
+  { label: "erfaring", path: "/experience" }
 ]
 
 // Sortér sådan at det aktuelle link altid kommer først
