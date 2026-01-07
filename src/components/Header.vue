@@ -1,9 +1,9 @@
 <template>
   <!-- wrapper: reference for absolute positioning -->
-  <nav ref="boxWrapper" class="relative w-full" :style="{ height: height + 'px' }">
+  <nav ref="boxWrapper" class="relative w-full after:absolute after:bottom-0 after:left-0 after:h-[12px] after:w-full after:bg-secondary after:translate-y-1/2" :style="{ height: height + 'px' }">
     <!-- INDRE BOX: det indhold der SKAL clips -->
     <div class="bg-primary w-full h-full overflow-hidden">
-        <div class="flex items-center justify-center h-full pt-35 pb-28">
+        <div class="flex items-center justify-center h-full pt-44 pb-28">
             <div class="flex flex-col min-h-[120px]">
                 <router-link
                     v-for="link in sortedLinks"
@@ -26,10 +26,10 @@
     aria-label="Resize container vertically"
     :style="{ touchAction: 'none' }"
     >
-        <span class="w-28 h-8 block bg-custom-gray rounded-full">
+        <span class="w-28 h-8 block bg-secondary rounded-full">
             <div class="flex flex-col items-center justify-center gap-1 py-2.5">
-                <span class="block w-12 h-[3px] bg-gray-800 rounded"></span>
-                <span class="block w-12 h-[3px] bg-gray-800 rounded"></span>
+                <span class="block w-12 h-[3px] bg-primary rounded"></span>
+                <span class="block w-12 h-[3px] bg-primary rounded"></span>
             </div>
         </span>
     </button>
@@ -102,7 +102,8 @@ const route = useRoute()
 const links = [
   { label: "om mig", path: "/" },
   { label: "projekter", path: "/post" },
-  { label: "erfaring", path: "/experience" }
+  { label: "erfaring", path: "/experience" },
+  { label: "uddannelse", path: "/education" }
 ]
 
 // Sortér sådan at det aktuelle link altid kommer først

@@ -56,7 +56,7 @@ onMounted(() => {
 <template>
   <Header />
     <main class="">
-        <div class="m-container pt-12 mb-2">
+        <div class="m-container mx-4 pt-12 mb-2">
             <div class="col-span-full">
                 <p class="font-bold">Her kan der læses om projekter jeg tidligere har været med til at udvikle, hvad de gik ud på og hvad jeg har lavet i dem</p>
             </div>
@@ -65,32 +65,32 @@ onMounted(() => {
         <!-- Erfaringer  -->
 
         <div class="m-container mb-8 mt-4">
-            <div class="col-span-full">
-                <details ref="detailsRef" class="group mb-4 p-4 bg-secondary text-white rounded-xl">
-                    <summary ref="summaryRef" class="cursor-pointer flex items-center justify-between font-bold ">
-                        <span class="transition-transform duration-300 group-open:rotate-180 select-none">⬇</span>
-                        <h4 class="select-none">Projekter</h4>  
-                        <span class="transition-transform duration-300 group-open:rotate-180 select-none">⬇</span>
+            <div class="col-span-3">
+                <details ref="detailsRef" class="group mb-2 p-4 bg-secondary text-white rounded-xl">
+                    <summary ref="summaryRef" class="cursor-pointer flex items-center justify-between font-bold">
+                        <p class="select-none text-primary font-extrabold text-2xl" v-html="currentPost?.title.rendered || 'Projekter'"></p>  
+                        <span class="transition-transform duration-300 group-open:rotate-180 select-none">&#8645;</span>
                     </summary>
 
                     <div ref="contentRef"
                     class="overflow-hidden transition-[max-height] duration-200 ease-in-out"
                     style="max-height:0px"
                     >
-                        <div class="mt-2 p-4 rounded">
-                            <div v-for="post in posts" :key="post.id">
+                        <div class="mt-2 pt-4 rounded">
+                            <div v-for="post in posts.filter(p => p.id !== currentPost?.id)" :key="post.id">
                                 <div class="w-full flex ">
-                                    <button
-                                    class="mx-auto pb-2 font-extrabold leading-[1.15] text-[clamp(2rem,4vw,3rem)] hover:underline"
+                                <button
+                                    class="pb-1 font-semibold text-xl hover:border-b-2 flex items-center w-full gap-y-20"
                                     @click="
-                                    currentPost = post;
-                                    detailsRef.removeAttribute('open')
+                                        currentPost = post;
+                                        detailsRef.removeAttribute('open')
                                     "
-                                    v-html="post.title.rendered"
                                     :class="{ 'text-primary': currentPost?.id === post.id }"
-                                />
+                                >
+                                    <span v-html="post.title.rendered"></span>
+                                    <span class="ml-auto">&#8669;</span>
+                                </button>
                                 </div>
-                                
                             </div>
                         </div>
                     </div>
@@ -100,9 +100,9 @@ onMounted(() => {
         </div>
 
         <div v-if="currentPost">
-            <div class="m-container">
+            <div class="m-container mx-4">
                 <div class="col-span-full">
-                <h2 class="text-emerald mb-2" v-html="currentPost.title.rendered"></h2>
+                <h2 class="text-primary mb-2" v-html="currentPost.title.rendered"></h2>
                 <div class="mb-2" v-html="currentPost.excerpt.rendered"></div>
                 </div>
             </div>
